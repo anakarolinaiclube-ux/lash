@@ -10,18 +10,20 @@
     <style>
         /* --- CONFIGURAÇÕES GERAIS --- */
         :root {
-            /* Paleta Premium: Preto, Prata, Rosa */
-            --bg-color: #050505;
-            --card-bg: rgba(255, 255, 255, 0.03); /* Efeito Vidro */
-            --card-border: rgba(255, 255, 255, 0.1);
+            /* Paleta Premium Ajustada */
+            --bg-start: #232526; /* Cinza Chumbo Suave */
+            --bg-end: #0f1011;   /* Preto Profundo (não absoluto) */
             
-            --text-main: #E0E0E0; /* Prata Claro */
-            --text-muted: #A0A0A0; /* Prata Escuro */
+            --card-bg: rgba(255, 255, 255, 0.04); /* Efeito Vidro */
+            --card-border: rgba(255, 255, 255, 0.08);
+            
+            --text-main: #EAEAEA; /* Prata Quase Branco */
+            --text-muted: #B0B0B0; /* Prata Médio */
             
             --pink-accent: #FF007F; /* Rosa Neon Sofisticado */
-            --pink-glow: rgba(255, 0, 127, 0.4);
+            --pink-glow: rgba(255, 0, 127, 0.3);
             
-            --silver-gradient: linear-gradient(135deg, #E0E0E0 0%, #757575 100%);
+            --silver-gradient: linear-gradient(135deg, #FFFFFF 0%, #888888 100%);
         }
 
         * {
@@ -32,13 +34,15 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-color);
+            /* Fundo Gradiente Suavizado em vez de preto chapado */
+            background: linear-gradient(180deg, var(--bg-start) 0%, var(--bg-end) 100%);
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
+            min-height: 100vh;
         }
 
-        /* BACKGROUND ANIMADO (AMBIENT MOVEMENT) */
+        /* BACKGROUND ANIMADO (AMBIENT MOVEMENT) - Mais sutil */
         .ambient-bg {
             position: fixed;
             top: 0;
@@ -46,25 +50,56 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: radial-gradient(circle at 15% 50%, rgba(255, 0, 127, 0.08), transparent 25%),
-                        radial-gradient(circle at 85% 30%, rgba(100, 100, 100, 0.1), transparent 25%);
-            animation: moveBackground 20s infinite alternate ease-in-out;
+            /* Gradientes mais espalhados para reduzir contraste */
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(255, 0, 127, 0.04), transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.03), transparent 40%);
+            animation: moveBackground 15s infinite alternate ease-in-out;
         }
 
         @keyframes moveBackground {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.1); opacity: 1; }
         }
 
         .container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 24px;
+            position: relative;
+            z-index: 2;
         }
 
         section {
-            padding: 100px 0;
+            padding: 90px 0;
             position: relative;
+            overflow: hidden; /* Para conter os elementos decorativos */
+        }
+
+        /* ELEMENTOS DECORATIVOS (LASH CURVES) */
+        /* Criam formas curvas sutis no fundo para preencher espaço */
+        .lash-decor {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .decor-left {
+            top: 20%;
+            left: -200px;
+            border-top: 1px solid rgba(255, 0, 127, 0.1); /* Toque rosa sutil */
+            transform: rotate(-15deg);
+        }
+
+        .decor-right {
+            bottom: 10%;
+            right: -200px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transform: rotate(15deg);
         }
 
         h1, h2, h3, h4 {
@@ -73,7 +108,7 @@
             letter-spacing: -0.5px;
         }
 
-        /* --- BOTÕES FUTURISTAS --- */
+        /* --- BOTÕES --- */
         .btn {
             display: inline-block;
             padding: 16px 40px;
@@ -85,7 +120,7 @@
             text-align: center;
             cursor: pointer;
             position: relative;
-            z-index: 1;
+            z-index: 5;
             overflow: hidden;
         }
 
@@ -93,13 +128,13 @@
             background: var(--pink-accent);
             color: #fff;
             border: 1px solid var(--pink-accent);
-            box-shadow: 0 0 20px var(--pink-glow);
+            box-shadow: 0 4px 25px var(--pink-glow);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 0 40px var(--pink-glow);
-            filter: brightness(1.2);
+            box-shadow: 0 8px 40px var(--pink-glow);
+            filter: brightness(1.1);
         }
 
         .btn-secondary {
@@ -110,7 +145,7 @@
         }
 
         .btn-secondary:hover {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.08);
             border-color: #fff;
         }
 
@@ -118,13 +153,14 @@
         .hero {
             text-align: center;
             padding: 140px 0 100px;
-            background: radial-gradient(circle at center, rgba(20,20,20,0.8) 0%, #050505 100%);
+            /* Gradiente sutil no topo para destacar o header */
+            background: radial-gradient(circle at center top, rgba(255,255,255,0.05) 0%, transparent 70%);
         }
 
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 24px;
-            background: linear-gradient(to right, #fff, #b3b3b3);
+            background: linear-gradient(to right, #fff, #bbb);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -132,7 +168,7 @@
         .hero h1 span {
             color: var(--pink-accent);
             -webkit-text-fill-color: var(--pink-accent);
-            text-shadow: 0 0 20px rgba(255, 0, 127, 0.5);
+            text-shadow: 0 0 25px rgba(255, 0, 127, 0.4);
         }
 
         .hero p {
@@ -145,23 +181,25 @@
 
         /* --- CARDS & GLASSMORPHISM --- */
         .pain-points, .tools-section, .target-audience, .testimonials, .offer {
-            border-top: 1px solid rgba(255,255,255,0.05);
+            border-top: 1px solid rgba(255,255,255,0.03);
         }
 
         .glass-card {
             background: var(--card-bg);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             border: 1px solid var(--card-border);
             border-radius: 16px;
             padding: 40px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            z-index: 2;
         }
 
         .glass-card:hover {
-            border-color: var(--pink-accent);
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 0, 127, 0.4);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            background: rgba(255, 255, 255, 0.06);
         }
 
         /* --- DORES --- */
@@ -170,13 +208,16 @@
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 24px;
             margin-top: 50px;
+            position: relative;
+            z-index: 2;
         }
 
         .pain-item {
             border-left: 3px solid var(--pink-accent);
-            background: linear-gradient(90deg, rgba(255,0,127,0.05) 0%, transparent 100%);
+            background: linear-gradient(90deg, rgba(255,0,127,0.03) 0%, transparent 100%);
             padding: 25px;
             border-radius: 0 8px 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.02);
         }
 
         .pain-item p {
@@ -204,6 +245,7 @@
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            z-index: 2;
         }
 
         /* Efeito de brilho prateado passando */
@@ -214,7 +256,7 @@
             left: -100%;
             width: 50%;
             height: 100%;
-            background: linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent);
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.04), transparent);
             transform: skewX(-25deg);
             transition: 0.5s;
         }
@@ -225,9 +267,9 @@
         }
 
         .tool-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            border-color: rgba(255,255,255,0.3);
-            box-shadow: 0 0 30px rgba(255, 0, 127, 0.1);
+            transform: translateY(-5px) scale(1.01);
+            border-color: rgba(255,255,255,0.2);
+            box-shadow: 0 0 30px rgba(255, 0, 127, 0.08);
         }
 
         .tool-number {
@@ -237,7 +279,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 20px;
-            opacity: 0.3;
+            opacity: 0.4;
         }
 
         .tool-tag {
@@ -273,16 +315,21 @@
             }
         }
 
-        /* --- AUDIÊNCIA --- */
-        .audience-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+        /* --- AUDIÊNCIA (Somente "Para quem é") --- */
+        .audience-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
         }
 
-        .check-list ul, .cross-list ul { list-style: none; }
+        .check-list {
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .check-list ul { list-style: none; }
         
-        .check-list li, .cross-list li {
+        .check-list li {
             margin-bottom: 20px;
             padding: 15px;
             border-radius: 8px;
@@ -296,13 +343,7 @@
             color: var(--pink-accent); /* Rosa */
             margin-right: 15px;
             font-size: 1.2rem;
-        }
-
-        .cross-list li::before {
-            content: "✖";
-            color: #757575; /* Prata Escuro */
-            margin-right: 15px;
-            font-size: 1.2rem;
+            font-weight: bold;
         }
 
         /* --- DEPOIMENTOS --- */
@@ -311,10 +352,12 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 50px;
+            position: relative;
+            z-index: 2;
         }
 
         .testimonial-card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+            background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
             border: 1px solid rgba(255,255,255,0.05);
             padding: 30px;
             border-radius: 12px;
@@ -337,14 +380,17 @@
 
         /* --- OFERTA --- */
         .offer-box {
-            background: rgba(10, 10, 10, 0.8);
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(15px);
             border: 1px solid var(--pink-accent);
             border-radius: 20px;
             padding: 60px 40px;
             max-width: 700px;
             margin: 0 auto;
             text-align: center;
-            box-shadow: 0 0 50px rgba(255, 0, 127, 0.15);
+            box-shadow: 0 0 60px rgba(255, 0, 127, 0.1);
+            position: relative;
+            z-index: 5;
         }
 
         .offer-title {
@@ -356,12 +402,12 @@
         }
 
         footer {
-            background-color: #000;
+            background-color: rgba(0,0,0,0.3);
             color: #555;
             text-align: center;
             padding: 40px 0;
             font-size: 0.8rem;
-            border-top: 1px solid #111;
+            border-top: 1px solid rgba(255,255,255,0.03);
         }
 
         /* --- SCROLL ANIMATION CLASS --- */
@@ -376,20 +422,46 @@
             transform: translateY(0);
         }
 
+        /* --- AJUSTES MOBILE (Responsividade Otimizada) --- */
         @media (max-width: 767px) {
-            .hero h1 { font-size: 2.2rem; }
-            .audience-grid { grid-template-columns: 1fr; }
-            .tool-number { font-size: 3rem; }
+            section {
+                padding: 60px 0; /* Reduzido de 100px para 60px */
+            }
+            
+            .hero {
+                padding-top: 100px;
+                padding-bottom: 60px;
+            }
+
+            .hero h1 { 
+                font-size: 2.2rem; 
+            }
+            
+            .tool-number { 
+                font-size: 3rem; 
+            }
+
+            /* Elementos decorativos mais discretos no mobile */
+            .lash-decor {
+                opacity: 0.5;
+            }
+            
+            .offer-box {
+                padding: 40px 20px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ELEMENTO DE FUNDO -->
+    <!-- BACKGROUND ANIMADO -->
     <div class="ambient-bg"></div>
 
     <!-- HEADER HERO -->
     <header class="hero">
+        <!-- Elemento decorativo Lash Curve -->
+        <div class="lash-decor decor-left" style="top: -10%; opacity: 0.3;"></div>
+        
         <div class="container reveal">
             <h1>Você está <span>pagando para trabalhar</span> com extensão de cílios?</h1>
             <p>Descubra como cobrar o preço justo, organizar sua agenda e cuidar da sua saúde com um kit prático de 5 ferramentas digitais essenciais para Lash Designers.</p>
@@ -399,6 +471,7 @@
 
     <!-- DORES -->
     <section class="pain-points">
+        <div class="lash-decor decor-right"></div>
         <div class="container">
             <h2 style="text-align: center;" class="reveal">Sua realidade é parecida com essa?</h2>
             <div class="pain-grid">
@@ -430,6 +503,7 @@
 
     <!-- FERRAMENTAS (CARDS) -->
     <section class="tools-section">
+        <div class="lash-decor decor-left" style="top: 20%;"></div>
         <div class="container">
             
             <!-- Ferramenta 1 -->
@@ -485,25 +559,18 @@
         </div>
     </section>
 
-    <!-- PARA QUEM É -->
+    <!-- PARA QUEM É (Seção Ajustada e Centralizada) -->
     <section class="target-audience">
+        <div class="lash-decor decor-right" style="bottom: 50%;"></div>
         <div class="container">
-            <div class="audience-grid">
+            <div class="audience-wrapper">
                 <div class="check-list glass-card reveal">
-                    <h3 style="margin-bottom: 20px;">Para quem é o Pack Lash Pro:</h3>
+                    <h3 style="margin-bottom: 30px; text-align: center;">Para quem é o Pack Lash Pro:</h3>
                     <ul>
                         <li>Lash Designers autônomas que cuidam de tudo sozinhas.</li>
                         <li>Profissionais que sentem que o dinheiro "some" no fim do mês.</li>
                         <li>Quem deseja profissionalizar o atendimento e a gestão.</li>
                         <li>Quem quer ter mais segurança para passar o preço para a cliente.</li>
-                    </ul>
-                </div>
-                <div class="cross-list glass-card reveal">
-                    <h3 style="margin-bottom: 20px; color: #aaa;">Para quem NÃO é:</h3>
-                    <ul>
-                        <li>Quem busca "dinheiro fácil" sem ajustar processos.</li>
-                        <li>Quem já possui softwares de gestão complexos e caros.</li>
-                        <li>Quem não está disposta a organizar o próprio negócio.</li>
                     </ul>
                 </div>
             </div>
@@ -514,7 +581,7 @@
     <section>
         <div class="container">
             <h2 style="text-align: center; margin-bottom: 40px;" class="reveal">O que muda no seu dia a dia?</h2>
-            <div class="pain-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+            <div class="pain-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); border: none; background: none;">
                 <div style="text-align: center;" class="reveal">
                     <h4 style="color: var(--pink-accent); margin-bottom: 10px;">Segurança</h4>
                     <p style="color: #aaa;">Saber exatamente o custo do seu pingo de cola e do seu minuto trabalhado.</p>
@@ -554,6 +621,7 @@
 
     <!-- OFERTA -->
     <section class="offer" id="oferta">
+        <div class="lash-decor decor-left" style="bottom: 0;"></div>
         <div class="container reveal">
             <div class="offer-box">
                 <h2 class="offer-title">Tenha o controle do seu Studio na palma da mão</h2>
@@ -585,7 +653,6 @@
 
     <!-- SCRIPT DE ANIMAÇÃO NO SCROLL -->
     <script>
-        // Simples script para revelar elementos ao rolar a página
         window.addEventListener('scroll', reveal);
 
         function reveal() {
@@ -601,8 +668,6 @@
                 }
             }
         }
-        
-        // Ativar animação inicial ao carregar
         reveal();
     </script>
 </body>
