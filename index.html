@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kit Gestão Lash Designer | Sistema Premium</title>
+    <!-- Fonte Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CONFIGURAÇÕES GERAIS --- */
+        :root {
+            /* Paleta Premium: Preto, Prata, Rosa */
+            --bg-color: #050505;
+            --card-bg: rgba(255, 255, 255, 0.03); /* Efeito Vidro */
+            --card-border: rgba(255, 255, 255, 0.1);
+            
+            --text-main: #E0E0E0; /* Prata Claro */
+            --text-muted: #A0A0A0; /* Prata Escuro */
+            
+            --pink-accent: #FF007F; /* Rosa Neon Sofisticado */
+            --pink-glow: rgba(255, 0, 127, 0.4);
+            
+            --silver-gradient: linear-gradient(135deg, #E0E0E0 0%, #757575 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* BACKGROUND ANIMADO (AMBIENT MOVEMENT) */
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 15% 50%, rgba(255, 0, 127, 0.08), transparent 25%),
+                        radial-gradient(circle at 85% 30%, rgba(100, 100, 100, 0.1), transparent 25%);
+            animation: moveBackground 20s infinite alternate ease-in-out;
+        }
+
+        @keyframes moveBackground {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        h1, h2, h3, h4 {
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        /* --- BOTÕES FUTURISTAS --- */
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.4s ease;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--pink-accent);
+            color: #fff;
+            border: 1px solid var(--pink-accent);
+            box-shadow: 0 0 20px var(--pink-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 40px var(--pink-glow);
+            filter: brightness(1.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.3);
+            margin-top: 15px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: #fff;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            text-align: center;
+            padding: 140px 0 100px;
+            background: radial-gradient(circle at center, rgba(20,20,20,0.8) 0%, #050505 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 24px;
+            background: linear-gradient(to right, #fff, #b3b3b3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h1 span {
+            color: var(--pink-accent);
+            -webkit-text-fill-color: var(--pink-accent);
+            text-shadow: 0 0 20px rgba(255, 0, 127, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            font-weight: 300;
+        }
+
+        /* --- CARDS & GLASSMORPHISM --- */
+        .pain-points, .tools-section, .target-audience, .testimonials, .offer {
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 40px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-card:hover {
+            border-color: var(--pink-accent);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* --- DORES --- */
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 50px;
+        }
+
+        .pain-item {
+            border-left: 3px solid var(--pink-accent);
+            background: linear-gradient(90deg, rgba(255,0,127,0.05) 0%, transparent 100%);
+            padding: 25px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .pain-item p {
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        /* --- OVERVIEW --- */
+        .overview {
+            text-align: center;
+        }
+        .overview h2 strong {
+            color: var(--pink-accent);
+        }
+
+        /* --- FERRAMENTAS (MICROSAAS) --- */
+        .tool-card {
+            display: flex;
+            flex-direction: column;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Efeito de brilho prateado passando */
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent);
+            transform: skewX(-25deg);
+            transition: 0.5s;
+        }
+
+        .tool-card:hover::before {
+            left: 150%;
+            transition: 0.7s;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: rgba(255,255,255,0.3);
+            box-shadow: 0 0 30px rgba(255, 0, 127, 0.1);
+        }
+
+        .tool-number {
+            font-size: 4rem;
+            font-weight: 700;
+            background: var(--silver-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        .tool-tag {
+            color: var(--pink-accent);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .tool-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .tool-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        @media (min-width: 768px) {
+            .tool-card {
+                flex-direction: row;
+                align-items: center;
+                text-align: left;
+            }
+            .tool-number {
+                margin-right: 40px;
+                margin-bottom: 0;
+            }
+        }
+
+        /* --- AUDIÊNCIA --- */
+        .audience-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .check-list ul, .cross-list ul { list-style: none; }
+        
+        .check-list li, .cross-list li {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.02);
+            display: flex;
+            align-items: center;
+        }
+
+        .check-list li::before {
+            content: "✔";
+            color: var(--pink-accent); /* Rosa */
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        .cross-list li::before {
+            content: "✖";
+            color: #757575; /* Prata Escuro */
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* --- DEPOIMENTOS --- */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            color: var(--pink-accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- OFERTA --- */
+        .offer-box {
+            background: rgba(10, 10, 10, 0.8);
+            border: 1px solid var(--pink-accent);
+            border-radius: 20px;
+            padding: 60px 40px;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: 0 0 50px rgba(255, 0, 127, 0.15);
+        }
+
+        .offer-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #E0E0E0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        footer {
+            background-color: #000;
+            color: #555;
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.8rem;
+            border-top: 1px solid #111;
+        }
+
+        /* --- SCROLL ANIMATION CLASS --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 767px) {
+            .hero h1 { font-size: 2.2rem; }
+            .audience-grid { grid-template-columns: 1fr; }
+            .tool-number { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ELEMENTO DE FUNDO -->
+    <div class="ambient-bg"></div>
+
+    <!-- HEADER HERO -->
+    <header class="hero">
+        <div class="container reveal">
+            <h1>Você está <span>pagando para trabalhar</span> com extensão de cílios?</h1>
+            <p>Descubra como cobrar o preço justo, organizar sua agenda e cuidar da sua saúde com um kit prático de 5 ferramentas digitais essenciais para Lash Designers.</p>
+            <a href="#oferta" class="btn btn-primary">Quero profissionalizar meu negócio</a>
+        </div>
+    </header>
+
+    <!-- DORES -->
+    <section class="pain-points">
+        <div class="container">
+            <h2 style="text-align: center;" class="reveal">Sua realidade é parecida com essa?</h2>
+            <div class="pain-grid">
+                <div class="pain-item reveal">
+                    <p>Você trabalha horas seguidas, mas no final do mês a conta não fecha?</p>
+                </div>
+                <div class="pain-item reveal">
+                    <p>Tem medo de aumentar o preço e perder todas as clientes?</p>
+                </div>
+                <div class="pain-item reveal">
+                    <p>Sofre com clientes que marcam e não aparecem (No-Show)?</p>
+                </div>
+                <div class="pain-item reveal">
+                    <p>Sente dores nas costas e nas mãos, mas ignora por falta de tempo?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- APRESENTAÇÃO -->
+    <section class="overview">
+        <div class="container reveal">
+            <h2>A solução não é trabalhar mais. <br>É trabalhar <strong>melhor.</strong></h2>
+            <p style="max-width: 800px; margin: 20px auto 0 auto; color: #ccc;">
+                Criamos o <strong>Pack Lash Pro</strong>: um conjunto de 5 MicroSaaS (ferramentas digitais simples) desenvolvidas especificamente para resolver os gargalos de quem trabalha com cílios. Sem planilhas complexas, sem mensalidades caras de software. Apenas o que você precisa.
+            </p>
+        </div>
+    </section>
+
+    <!-- FERRAMENTAS (CARDS) -->
+    <section class="tools-section">
+        <div class="container">
+            
+            <!-- Ferramenta 1 -->
+            <div class="tool-card reveal">
+                <div class="tool-number">01</div>
+                <div class="tool-content">
+                    <span class="tool-tag">Precificação</span>
+                    <h3>Calculadora Inteligente de Preço</h3>
+                    <p>Pare de chutar valores. Insira seus custos fixos, materiais (fios, cola, descartáveis) e tempo de procedimento. A ferramenta diz exatamente quanto você deve cobrar para ter lucro real, não apenas pagar contas.</p>
+                </div>
+            </div>
+
+            <!-- Ferramenta 2 -->
+            <div class="tool-card reveal">
+                <div class="tool-number">02</div>
+                <div class="tool-content">
+                    <span class="tool-tag">Financeiro</span>
+                    <h3>Calculadora de Lucro Real por Cliente</h3>
+                    <p>Descubra quanto sobra no seu bolso após cada atendimento. Identifique quais técnicas (Volume Russo, Fio a Fio, Lash Lifting) são mais rentáveis e quais estão drenando seu tempo.</p>
+                </div>
+            </div>
+
+            <!-- Ferramenta 3 -->
+            <div class="tool-card reveal">
+                <div class="tool-number">03</div>
+                <div class="tool-content">
+                    <span class="tool-tag">Agenda</span>
+                    <h3>Sistema Anti-No-Show</h3>
+                    <p>Uma ferramenta simples para gerenciar confirmações. Receba scripts prontos de confirmação e um organizador visual para reduzir drasticamente os furos na agenda.</p>
+                </div>
+            </div>
+
+            <!-- Ferramenta 4 -->
+            <div class="tool-card reveal">
+                <div class="tool-number">04</div>
+                <div class="tool-content">
+                    <span class="tool-tag">Fidelização</span>
+                    <h3>Gestor de Retoques</h3>
+                    <p>Não espere a cliente lembrar. O sistema calcula a data ideal da manutenção baseada no ciclo do fio e te avisa quando entrar em contato. Aumente seu faturamento com a mesma base de clientes.</p>
+                </div>
+            </div>
+
+            <!-- Ferramenta 5 -->
+            <div class="tool-card reveal">
+                <div class="tool-number">05</div>
+                <div class="tool-content">
+                    <span class="tool-tag">Saúde</span>
+                    <h3>Planner de Saúde da Lash</h3>
+                    <p>Sua mão é seu instrumento de trabalho. Tenha acesso a um planejador de pausas estratégicas e exercícios rápidos de prevenção contra LER/DORT, focados na postura da lash designer.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PARA QUEM É -->
+    <section class="target-audience">
+        <div class="container">
+            <div class="audience-grid">
+                <div class="check-list glass-card reveal">
+                    <h3 style="margin-bottom: 20px;">Para quem é o Pack Lash Pro:</h3>
+                    <ul>
+                        <li>Lash Designers autônomas que cuidam de tudo sozinhas.</li>
+                        <li>Profissionais que sentem que o dinheiro "some" no fim do mês.</li>
+                        <li>Quem deseja profissionalizar o atendimento e a gestão.</li>
+                        <li>Quem quer ter mais segurança para passar o preço para a cliente.</li>
+                    </ul>
+                </div>
+                <div class="cross-list glass-card reveal">
+                    <h3 style="margin-bottom: 20px; color: #aaa;">Para quem NÃO é:</h3>
+                    <ul>
+                        <li>Quem busca "dinheiro fácil" sem ajustar processos.</li>
+                        <li>Quem já possui softwares de gestão complexos e caros.</li>
+                        <li>Quem não está disposta a organizar o próprio negócio.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFÍCIOS -->
+    <section>
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 40px;" class="reveal">O que muda no seu dia a dia?</h2>
+            <div class="pain-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <div style="text-align: center;" class="reveal">
+                    <h4 style="color: var(--pink-accent); margin-bottom: 10px;">Segurança</h4>
+                    <p style="color: #aaa;">Saber exatamente o custo do seu pingo de cola e do seu minuto trabalhado.</p>
+                </div>
+                <div style="text-align: center;" class="reveal">
+                    <h4 style="color: var(--pink-accent); margin-bottom: 10px;">Previsibilidade</h4>
+                    <p style="color: #aaa;">Agenda organizada com menos buracos e faturamento mais estável.</p>
+                </div>
+                <div style="text-align: center;" class="reveal">
+                    <h4 style="color: var(--pink-accent); margin-bottom: 10px;">Longevidade</h4>
+                    <p style="color: #aaa;">Trabalhar com menos dores físicas para ter uma carreira longa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROVA SOCIAL -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 style="text-align: center;" class="reveal">Quem usa, recomenda</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card reveal">
+                    <p class="testimonial-text">"Eu achava que cobrava bem no Volume Russo, mas a calculadora me mostrou que eu estava tendo prejuízo por causa do tempo que levava. Ajustei o preço e as clientes valorizaram mais."</p>
+                    <p class="testimonial-author">mariana_lashrj</p>
+                </div>
+                <div class="testimonial-card reveal">
+                    <p class="testimonial-text">"O Gestor de Retoques salvou meu mês fraco. Mandei mensagem para as clientes na data que a ferramenta indicou e lotei a semana só com manutenções."</p>
+                    <p class="testimonial-author">studio.carolb</p>
+                </div>
+                <div class="testimonial-card reveal">
+                    <p class="testimonial-text">"Simples e direto ao ponto. Não tenho paciência para planilhas de Excel complicadas, e esse pacote resolveu meu financeiro."</p>
+                    <p class="testimonial-author">fran.beautycilios</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OFERTA -->
+    <section class="offer" id="oferta">
+        <div class="container reveal">
+            <div class="offer-box">
+                <h2 class="offer-title">Tenha o controle do seu Studio na palma da mão</h2>
+                <p style="margin-bottom: 30px; color: #ccc;">
+                    Leve o <strong>Pack Lash Pro completo</strong> (5 ferramentas) pelo valor de uma única manutenção de cílios.
+                </p>
+                <p style="font-size: 0.9rem; color: #888; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 1px;">
+                    Acesso vitalício | Atualizações inclusas | Suporte
+                </p>
+                
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                    <a href="#" class="btn btn-primary">QUERO ACESSAR O PACOTE AGORA</a>
+                    <a href="#" class="btn btn-secondary">Ver como funciona</a>
+                </div>
+                
+                <p style="margin-top: 30px; font-size: 0.8rem; color: #666;">
+                    Compra segura. Garantia de 7 dias.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Pack Lash Pro. Todos os direitos reservados.</p>
+            <p style="opacity: 0.5; margin-top: 10px;">Este produto não garante resultados financeiros milagrosos. O sucesso depende da aplicação das ferramentas.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT DE ANIMAÇÃO NO SCROLL -->
+    <script>
+        // Simples script para revelar elementos ao rolar a página
+        window.addEventListener('scroll', reveal);
+
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+
+            for (var i = 0; i < reveals.length; i++) {
+                var windowheight = window.innerHeight;
+                var revealtop = reveals[i].getBoundingClientRect().top;
+                var revealpoint = 100;
+
+                if (revealtop < windowheight - revealpoint) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        
+        // Ativar animação inicial ao carregar
+        reveal();
+    </script>
+</body>
+</html>
