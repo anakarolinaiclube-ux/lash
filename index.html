@@ -42,69 +42,6 @@
             min-height: 100vh;
         }
 
-        /* --- BACKGROUND ANIMADO (LINHAS ESVOAÇANTES / ONDAS) --- */
-        .bg-decor-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .wave-line {
-            position: absolute;
-            left: 0;
-            width: 200%; /* Largura dobrada para permitir o movimento contínuo */
-            height: 100%;
-            background-repeat: repeat-x;
-            background-position: center;
-            background-size: 50% 100%; /* Ajuste para o SVG se repetir suavemente */
-            opacity: 0.4;
-        }
-
-        /* Animação de Deslize (Drift) */
-        @keyframes drift {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* Onda 1 - Rosa Suave (Topo) */
-        .wave-1 {
-            top: -20%;
-            /* SVG de linha curva suave rosa */
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320' preserveAspectRatio='none'%3E%3Cpath fill='none' stroke='%23FF007F' stroke-width='2' stroke-opacity='0.3' d='M0,160L48,176C96,192,192,224,288,224C384,224,480,192,576,165.3C672,139,768,117,864,128C960,139,1056,181,1152,197.3C1248,213,1344,203,1392,197.3L1440,192'/%3E%3C/svg%3E");
-            animation: drift 25s linear infinite;
-            opacity: 0.6;
-        }
-
-        /* Onda 2 - Cinza Escuro (Meio) */
-        .wave-2 {
-            top: 10%;
-            /* SVG de linha curva mais acentuada cinza */
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320' preserveAspectRatio='none'%3E%3Cpath fill='none' stroke='%23111111' stroke-width='1.5' stroke-opacity='0.15' d='M0,96L80,122.7C160,149,320,203,480,202.7C640,203,800,149,960,138.7C1120,128,1280,160,1360,176L1440,192'/%3E%3C/svg%3E");
-            animation: drift 35s linear infinite reverse; /* Move para o outro lado */
-            opacity: 0.4;
-        }
-
-        /* Onda 3 - Rosa (Baixo) */
-        .wave-3 {
-            bottom: -30%;
-            height: 80%;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320' preserveAspectRatio='none'%3E%3Cpath fill='none' stroke='%23FF007F' stroke-width='3' stroke-opacity='0.1' d='M0,224L60,213.3C120,203,240,181,360,181.3C480,181,600,203,720,224C840,245,960,267,1080,261.3C1200,256,1320,224,1380,208L1440,192'/%3E%3C/svg%3E");
-            animation: drift 40s linear infinite;
-        }
-
-        /* Onda 4 - Cinza Fina (Detalhe) */
-        .wave-4 {
-            top: 40%;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320' preserveAspectRatio='none'%3E%3Cpath fill='none' stroke='%23000000' stroke-width='1' stroke-opacity='0.1' d='M0,128L120,154.7C240,181,480,235,720,229.3C960,224,1200,160,1320,128L1440,96'/%3E%3C/svg%3E");
-            animation: drift 30s linear infinite;
-            transform: scaleY(1.5);
-        }
-
         .container {
             max-width: 1100px;
             margin: 0 auto;
@@ -436,14 +373,6 @@
     <!-- NOME DO PRODUTO TOPO -->
     <div class="top-bar">
         <div class="brand-name">Pack Lash <span>Pro</span></div>
-    </div>
-
-    <!-- BACKGROUND DECORATIVO ANIMADO (LINHAS ESVOAÇANTES) -->
-    <div class="bg-decor-wrapper">
-        <div class="wave-line wave-1"></div>
-        <div class="wave-line wave-2"></div>
-        <div class="wave-line wave-3"></div>
-        <div class="wave-line wave-4"></div>
     </div>
 
     <!-- HEADER HERO -->
