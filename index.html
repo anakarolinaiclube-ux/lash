@@ -3,27 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kit Gestão Lash Designer | Sistema Premium</title>
+    <title>Pack Lash Pro | Gestão de Alta Performance</title>
     <!-- Fonte Poppins -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         /* --- CONFIGURAÇÕES GERAIS --- */
         :root {
-            /* Paleta Premium Ajustada */
-            --bg-start: #232526; /* Cinza Chumbo Suave */
-            --bg-end: #0f1011;   /* Preto Profundo (não absoluto) */
+            /* Paleta Silver & Black */
+            --bg-gradient: linear-gradient(135deg, #F5F7FA 0%, #C3CFE2 100%); /* Prateado Metálico */
             
-            --card-bg: rgba(255, 255, 255, 0.04); /* Efeito Vidro */
-            --card-border: rgba(255, 255, 255, 0.08);
+            --card-bg: rgba(255, 255, 255, 0.45); /* Vidro Branco */
+            --card-border: rgba(255, 255, 255, 0.8);
             
-            --text-main: #EAEAEA; /* Prata Quase Branco */
-            --text-muted: #B0B0B0; /* Prata Médio */
+            --text-main: #111111; /* Preto Absoluto */
+            --text-muted: #444444; /* Cinza Escuro */
             
-            --pink-accent: #FF007F; /* Rosa Neon Sofisticado */
-            --pink-glow: rgba(255, 0, 127, 0.3);
+            --pink-accent: #FF007F; /* Rosa Neon */
+            --pink-glow: rgba(255, 0, 127, 0.25);
             
-            --silver-gradient: linear-gradient(135deg, #FFFFFF 0%, #888888 100%);
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.12);
         }
 
         * {
@@ -34,32 +34,61 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            /* Fundo Gradiente Suavizado em vez de preto chapado */
-            background: linear-gradient(180deg, var(--bg-start) 0%, var(--bg-end) 100%);
+            background: var(--bg-gradient);
+            background-attachment: fixed; /* Efeito metálico fixo */
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
             min-height: 100vh;
         }
 
-        /* BACKGROUND ANIMADO (AMBIENT MOVEMENT) - Mais sutil */
-        .ambient-bg {
+        /* --- DECORAÇÃO DE FUNDO (CÍLIOS E OLHOS) --- */
+        .bg-decor-wrapper {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
-            /* Gradientes mais espalhados para reduzir contraste */
-            background: 
-                radial-gradient(circle at 10% 20%, rgba(255, 0, 127, 0.04), transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.03), transparent 40%);
-            animation: moveBackground 15s infinite alternate ease-in-out;
+            pointer-events: none;
+            overflow: hidden;
         }
 
-        @keyframes moveBackground {
-            0% { transform: scale(1); opacity: 0.8; }
-            100% { transform: scale(1.1); opacity: 1; }
+        /* Ícones SVG estilizados via CSS Mask ou Background Image */
+        .decor-icon {
+            position: absolute;
+            opacity: 0.06; /* Bem sutil para parecer marca d'água */
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        /* Ícone Cílios 1 */
+        .icon-lash-1 {
+            width: 300px;
+            height: 300px;
+            top: 5%;
+            left: -50px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M10 50 Q 50 10 90 50' /%3E%3Cpath d='M20 40 L 15 20' /%3E%3Cpath d='M35 30 L 30 10' /%3E%3Cpath d='M50 25 L 50 5' /%3E%3Cpath d='M65 30 L 70 10' /%3E%3Cpath d='M80 40 L 85 20' /%3E%3C/svg%3E");
+            transform: rotate(-10deg);
+        }
+
+        /* Ícone Olho/Cílios 2 */
+        .icon-lash-2 {
+            width: 400px;
+            height: 400px;
+            bottom: 10%;
+            right: -100px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23FF007F' stroke-width='2'%3E%3Cpath d='M10 50 Q 50 90 90 50' /%3E%3Cpath d='M10 50 Q 50 10 90 50' /%3E%3Ccircle cx='50' cy='50' r='15' /%3E%3Cpath d='M50 10 L 50 2' /%3E%3Cpath d='M30 15 L 25 5' /%3E%3Cpath d='M70 15 L 75 5' /%3E%3C/svg%3E");
+        }
+
+        /* Ícone Cílios 3 */
+        .icon-lash-3 {
+            width: 150px;
+            height: 150px;
+            top: 40%;
+            right: 10%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23000' stroke-width='3'%3E%3Cpath d='M10 60 Q 50 20 90 60' /%3E%3Cpath d='M25 45 L 20 25' /%3E%3Cpath d='M50 35 L 50 10' /%3E%3Cpath d='M75 45 L 80 25' /%3E%3C/svg%3E");
+            transform: rotate(15deg);
         }
 
         .container {
@@ -71,135 +100,126 @@
         }
 
         section {
-            padding: 90px 0;
+            padding: 80px 0;
             position: relative;
-            overflow: hidden; /* Para conter os elementos decorativos */
-        }
-
-        /* ELEMENTOS DECORATIVOS (LASH CURVES) */
-        /* Criam formas curvas sutis no fundo para preencher espaço */
-        .lash-decor {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 50%;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .decor-left {
-            top: 20%;
-            left: -200px;
-            border-top: 1px solid rgba(255, 0, 127, 0.1); /* Toque rosa sutil */
-            transform: rotate(-15deg);
-        }
-
-        .decor-right {
-            bottom: 10%;
-            right: -200px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            transform: rotate(15deg);
         }
 
         h1, h2, h3, h4 {
-            color: #fff;
+            color: var(--text-main);
             font-weight: 700;
             letter-spacing: -0.5px;
+        }
+
+        /* --- LOGO TOPO --- */
+        .top-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--text-main);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .brand-name span {
+            color: var(--pink-accent);
         }
 
         /* --- BOTÕES --- */
         .btn {
             display: inline-block;
-            padding: 16px 40px;
+            padding: 18px 45px;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.4s ease;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
             text-align: center;
             cursor: pointer;
             position: relative;
             z-index: 5;
-            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .btn-primary {
             background: var(--pink-accent);
             color: #fff;
-            border: 1px solid var(--pink-accent);
-            box-shadow: 0 4px 25px var(--pink-glow);
+            border: 2px solid var(--pink-accent);
+            box-shadow: 0 5px 20px var(--pink-glow);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 40px var(--pink-glow);
-            filter: brightness(1.1);
+            background: #e60073;
+            box-shadow: 0 10px 30px var(--pink-glow);
         }
 
         .btn-secondary {
             background: transparent;
-            color: #fff;
-            border: 1px solid rgba(255,255,255,0.3);
+            color: var(--text-main);
+            border: 2px solid var(--text-main);
             margin-top: 15px;
         }
 
         .btn-secondary:hover {
-            background: rgba(255,255,255,0.08);
-            border-color: #fff;
+            background: var(--text-main);
+            color: #fff;
         }
 
         /* --- HERO SECTION --- */
         .hero {
             text-align: center;
-            padding: 140px 0 100px;
-            /* Gradiente sutil no topo para destacar o header */
-            background: radial-gradient(circle at center top, rgba(255,255,255,0.05) 0%, transparent 70%);
+            padding: 160px 0 100px;
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 3.2rem;
             margin-bottom: 24px;
-            background: linear-gradient(to right, #fff, #bbb);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--text-main);
+            line-height: 1.2;
         }
 
         .hero h1 span {
             color: var(--pink-accent);
-            -webkit-text-fill-color: var(--pink-accent);
-            text-shadow: 0 0 25px rgba(255, 0, 127, 0.4);
+            background: linear-gradient(120deg, transparent 0%, transparent 60%, rgba(255, 0, 127, 0.2) 60%, rgba(255, 0, 127, 0.2) 100%);
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             color: var(--text-muted);
-            max-width: 700px;
+            max-width: 750px;
             margin: 0 auto 40px auto;
-            font-weight: 300;
+            font-weight: 400;
         }
 
-        /* --- CARDS & GLASSMORPHISM --- */
-        .pain-points, .tools-section, .target-audience, .testimonials, .offer {
-            border-top: 1px solid rgba(255,255,255,0.03);
-        }
-
+        /* --- CARDS & GLASSMORPHISM (Silver Style) --- */
         .glass-card {
             background: var(--card-bg);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border: 1px solid var(--card-border);
-            border-radius: 16px;
+            border-radius: 20px;
             padding: 40px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            z-index: 2;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-soft);
         }
 
         .glass-card:hover {
-            border-color: rgba(255, 0, 127, 0.4);
+            border-color: var(--pink-accent);
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            background: rgba(255, 255, 255, 0.06);
+            box-shadow: var(--shadow-hover);
+            background: rgba(255, 255, 255, 0.7);
         }
 
         /* --- DORES --- */
@@ -208,99 +228,78 @@
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 24px;
             margin-top: 50px;
-            position: relative;
-            z-index: 2;
         }
 
         .pain-item {
-            border-left: 3px solid var(--pink-accent);
-            background: linear-gradient(90deg, rgba(255,0,127,0.03) 0%, transparent 100%);
-            padding: 25px;
-            border-radius: 0 8px 8px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.02);
+            border-left: 4px solid var(--pink-accent);
+            background: #fff;
+            padding: 30px;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+        
+        .pain-item:hover {
+            transform: scale(1.02);
         }
 
         .pain-item p {
-            font-weight: 500;
+            font-weight: 600;
             color: var(--text-main);
         }
 
-        /* --- OVERVIEW --- */
-        .overview {
-            text-align: center;
-        }
-        .overview h2 strong {
-            color: var(--pink-accent);
-        }
-
-        /* --- FERRAMENTAS (MICROSAAS) --- */
+        /* --- FERRAMENTAS --- */
         .tool-card {
             display: flex;
             flex-direction: column;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
+            background: #fff; /* Fundo branco sólido para destaque no prata */
             border-radius: 20px;
             padding: 40px;
             margin-bottom: 30px;
             transition: all 0.4s ease;
             position: relative;
-            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(0,0,0,0.03);
             z-index: 2;
         }
 
-        /* Efeito de brilho prateado passando */
-        .tool-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(to right, transparent, rgba(255,255,255,0.04), transparent);
-            transform: skewX(-25deg);
-            transition: 0.5s;
-        }
-
-        .tool-card:hover::before {
-            left: 150%;
-            transition: 0.7s;
-        }
-
         .tool-card:hover {
-            transform: translateY(-5px) scale(1.01);
-            border-color: rgba(255,255,255,0.2);
-            box-shadow: 0 0 30px rgba(255, 0, 127, 0.08);
+            transform: translateY(-5px);
+            border-color: var(--pink-accent);
+            box-shadow: var(--shadow-hover);
         }
 
         .tool-number {
-            font-size: 4rem;
-            font-weight: 700;
-            background: var(--silver-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #E0E0E0; /* Prata bem claro para o número */
             margin-bottom: 20px;
-            opacity: 0.4;
+            line-height: 1;
+            text-shadow: 1px 1px 0 #ccc;
         }
 
         .tool-tag {
+            background: rgba(255, 0, 127, 0.1);
             color: var(--pink-accent);
+            padding: 5px 12px;
+            border-radius: 4px;
             text-transform: uppercase;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            display: inline-block;
         }
 
         .tool-content h3 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 15px;
-            color: #fff;
+            color: var(--text-main);
         }
 
         .tool-content p {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
         @media (min-width: 768px) {
@@ -315,7 +314,7 @@
             }
         }
 
-        /* --- AUDIÊNCIA (Somente "Para quem é") --- */
+        /* --- AUDIÊNCIA --- */
         .audience-wrapper {
             display: flex;
             justify-content: center;
@@ -330,19 +329,21 @@
         .check-list ul { list-style: none; }
         
         .check-list li {
-            margin-bottom: 20px;
-            padding: 15px;
-            border-radius: 8px;
-            background: rgba(255,255,255,0.02);
+            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.6);
             display: flex;
             align-items: center;
+            border: 1px solid rgba(255,255,255,0.8);
+            font-weight: 500;
         }
 
         .check-list li::before {
             content: "✔";
-            color: var(--pink-accent); /* Rosa */
+            color: var(--pink-accent);
             margin-right: 15px;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             font-weight: bold;
         }
 
@@ -352,68 +353,66 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 50px;
-            position: relative;
-            z-index: 2;
         }
 
         .testimonial-card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 30px;
+            background: #fff;
+            border-bottom: 4px solid var(--pink-accent);
+            padding: 35px;
             border-radius: 12px;
-            position: relative;
+            box-shadow: var(--shadow-soft);
         }
 
         .testimonial-text {
             font-style: italic;
-            color: #ccc;
+            color: #555;
             margin-bottom: 20px;
+            font-size: 0.95rem;
         }
 
         .testimonial-author {
-            color: var(--pink-accent);
-            font-weight: 600;
+            color: #111;
+            font-weight: 700;
             font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+        }
+        
+        .testimonial-author span {
+            color: var(--pink-accent);
         }
 
         /* --- OFERTA --- */
         .offer-box {
-            background: rgba(20, 20, 20, 0.6);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--pink-accent);
-            border-radius: 20px;
+            background: #fff;
+            border: 2px solid var(--pink-accent);
+            border-radius: 25px;
             padding: 60px 40px;
             max-width: 700px;
             margin: 0 auto;
             text-align: center;
-            box-shadow: 0 0 60px rgba(255, 0, 127, 0.1);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
             position: relative;
             z-index: 5;
         }
 
         .offer-title {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            background: linear-gradient(to right, #fff, #E0E0E0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
         }
 
         footer {
-            background-color: rgba(0,0,0,0.3);
-            color: #555;
+            background-color: #e0e0e0;
+            color: #666;
             text-align: center;
             padding: 40px 0;
             font-size: 0.8rem;
-            border-top: 1px solid rgba(255,255,255,0.03);
         }
 
         /* --- SCROLL ANIMATION CLASS --- */
         .reveal {
             opacity: 0;
-            transform: translateY(50px);
+            transform: translateY(40px);
             transition: all 0.8s ease-out;
         }
 
@@ -422,70 +421,55 @@
             transform: translateY(0);
         }
 
-        /* --- AJUSTES MOBILE (Responsividade Otimizada) --- */
         @media (max-width: 767px) {
-            section {
-                padding: 60px 0; /* Reduzido de 100px para 60px */
-            }
-            
-            .hero {
-                padding-top: 100px;
-                padding-bottom: 60px;
-            }
-
-            .hero h1 { 
-                font-size: 2.2rem; 
-            }
-            
-            .tool-number { 
-                font-size: 3rem; 
-            }
-
-            /* Elementos decorativos mais discretos no mobile */
-            .lash-decor {
-                opacity: 0.5;
-            }
-            
-            .offer-box {
-                padding: 40px 20px;
-            }
+            section { padding: 60px 0; }
+            .hero { padding-top: 120px; padding-bottom: 60px; }
+            .hero h1 { font-size: 2.3rem; }
+            .offer-box { padding: 40px 20px; }
+            .bg-decor-wrapper { opacity: 0.5; } /* Menos poluição visual no mobile */
         }
     </style>
 </head>
 <body>
 
-    <!-- BACKGROUND ANIMADO -->
-    <div class="ambient-bg"></div>
+    <!-- NOME DO PRODUTO TOPO -->
+    <div class="top-bar">
+        <div class="brand-name">Pack Lash <span>Pro</span></div>
+    </div>
+
+    <!-- BACKGROUND DECORATIVO (OVERLAYS) -->
+    <div class="bg-decor-wrapper">
+        <div class="decor-icon icon-lash-1"></div>
+        <div class="decor-icon icon-lash-2"></div>
+        <div class="decor-icon icon-lash-3"></div>
+    </div>
 
     <!-- HEADER HERO -->
     <header class="hero">
-        <!-- Elemento decorativo Lash Curve -->
-        <div class="lash-decor decor-left" style="top: -10%; opacity: 0.3;"></div>
-        
         <div class="container reveal">
-            <h1>Você está <span>pagando para trabalhar</span> com extensão de cílios?</h1>
-            <p>Descubra como cobrar o preço justo, organizar sua agenda e cuidar da sua saúde com um kit prático de 5 ferramentas digitais essenciais para Lash Designers.</p>
-            <a href="#oferta" class="btn btn-primary">Quero profissionalizar meu negócio</a>
+            <!-- Nova Headline Persuasiva -->
+            <h1>Agenda cheia não paga boleto. <br>Transforme seus atendimentos em <span>Lucro Real</span>.</h1>
+            <p>Pare de "pagar para trabalhar". Descubra o kit de inteligência financeira e gestão que as maiores Lash Designers estão usando para dobrar o lucro sem trabalhar mais horas.</p>
+            <a href="#oferta" class="btn btn-primary">Quero Lucrar de Verdade</a>
         </div>
     </header>
 
     <!-- DORES -->
     <section class="pain-points">
-        <div class="lash-decor decor-right"></div>
         <div class="container">
-            <h2 style="text-align: center;" class="reveal">Sua realidade é parecida com essa?</h2>
+            <h2 style="text-align: center;" class="reveal">Identificou seu cenário?</h2>
             <div class="pain-grid">
                 <div class="pain-item reveal">
-                    <p>Você trabalha horas seguidas, mas no final do mês a conta não fecha?</p>
+                    <p>O faturamento entra, mas você não sabe para onde o dinheiro vai?</p>
                 </div>
                 <div class="pain-item reveal">
-                    <p>Tem medo de aumentar o preço e perder todas as clientes?</p>
+                    <p>Tem medo de cobrar o valor justo e as clientes acharem caro?</p>
                 </div>
                 <div class="pain-item reveal">
-                    <p>Sofre com clientes que marcam e não aparecem (No-Show)?</p>
+                    <p>Perde dinheiro toda semana com clientes que agendam e somem?</p>
                 </div>
                 <div class="pain-item reveal">
-                    <p>Sente dores nas costas e nas mãos, mas ignora por falta de tempo?</p>
+                    <p>Sente o corpo "gritar" de dor, colocando sua carreira em risco?</p>
                 </div>
             </div>
         </div>
@@ -494,25 +478,24 @@
     <!-- APRESENTAÇÃO -->
     <section class="overview">
         <div class="container reveal">
-            <h2>A solução não é trabalhar mais. <br>É trabalhar <strong>melhor.</strong></h2>
-            <p style="max-width: 800px; margin: 20px auto 0 auto; color: #ccc;">
-                Criamos o <strong>Pack Lash Pro</strong>: um conjunto de 5 MicroSaaS (ferramentas digitais simples) desenvolvidas especificamente para resolver os gargalos de quem trabalha com cílios. Sem planilhas complexas, sem mensalidades caras de software. Apenas o que você precisa.
+            <h2>A solução definitiva para o seu Studio.</h2>
+            <p style="max-width: 800px; margin: 20px auto 0 auto; color: #555;">
+                O <strong>Pack Lash Pro</strong> não é um curso teórico. É um conjunto de 5 Ferramentas Práticas (MicroSaaS) prontas para usar. Você preenche os dados e o sistema te entrega a estratégia certa para lucrar.
             </p>
         </div>
     </section>
 
-    <!-- FERRAMENTAS (CARDS) -->
+    <!-- FERRAMENTAS -->
     <section class="tools-section">
-        <div class="lash-decor decor-left" style="top: 20%;"></div>
         <div class="container">
             
             <!-- Ferramenta 1 -->
             <div class="tool-card reveal">
                 <div class="tool-number">01</div>
                 <div class="tool-content">
-                    <span class="tool-tag">Precificação</span>
+                    <span class="tool-tag">O Favorito</span>
                     <h3>Calculadora Inteligente de Preço</h3>
-                    <p>Pare de chutar valores. Insira seus custos fixos, materiais (fios, cola, descartáveis) e tempo de procedimento. A ferramenta diz exatamente quanto você deve cobrar para ter lucro real, não apenas pagar contas.</p>
+                    <p>Nunca mais tenha prejuízo. Insira o custo dos seus fios, cola, descartáveis e aluguel. A ferramenta calcula automaticamente o PREÇO MÍNIMO que você deve cobrar para bater sua meta de lucro.</p>
                 </div>
             </div>
 
@@ -521,8 +504,8 @@
                 <div class="tool-number">02</div>
                 <div class="tool-content">
                     <span class="tool-tag">Financeiro</span>
-                    <h3>Calculadora de Lucro Real por Cliente</h3>
-                    <p>Descubra quanto sobra no seu bolso após cada atendimento. Identifique quais técnicas (Volume Russo, Fio a Fio, Lash Lifting) são mais rentáveis e quais estão drenando seu tempo.</p>
+                    <h3>Raio-X do Lucro Real</h3>
+                    <p>Faturar 10 mil não significa lucrar 10 mil. Veja exatamente quanto sobra limpo no seu bolso por procedimento e descubra se o Volume Russo ou o Lash Lifting é o seu verdadeiro "ouro".</p>
                 </div>
             </div>
 
@@ -530,9 +513,9 @@
             <div class="tool-card reveal">
                 <div class="tool-number">03</div>
                 <div class="tool-content">
-                    <span class="tool-tag">Agenda</span>
+                    <span class="tool-tag">Agenda Blindada</span>
                     <h3>Sistema Anti-No-Show</h3>
-                    <p>Uma ferramenta simples para gerenciar confirmações. Receba scripts prontos de confirmação e um organizador visual para reduzir drasticamente os furos na agenda.</p>
+                    <p>Pare de perder dinheiro com buracos na agenda. Utilize nosso fluxo de confirmação validado e organize visualmente seus horários para reduzir faltas em até 80%.</p>
                 </div>
             </div>
 
@@ -540,9 +523,9 @@
             <div class="tool-card reveal">
                 <div class="tool-number">04</div>
                 <div class="tool-content">
-                    <span class="tool-tag">Fidelização</span>
-                    <h3>Gestor de Retoques</h3>
-                    <p>Não espere a cliente lembrar. O sistema calcula a data ideal da manutenção baseada no ciclo do fio e te avisa quando entrar em contato. Aumente seu faturamento com a mesma base de clientes.</p>
+                    <span class="tool-tag">Recorrência</span>
+                    <h3>Gestor Automático de Retoques</h3>
+                    <p>Venda mais para a mesma cliente. O sistema projeta a data exata da manutenção e te avisa. É dinheiro garantido sem precisar gastar com anúncios para atrair gente nova.</p>
                 </div>
             </div>
 
@@ -550,49 +533,48 @@
             <div class="tool-card reveal">
                 <div class="tool-number">05</div>
                 <div class="tool-content">
-                    <span class="tool-tag">Saúde</span>
+                    <span class="tool-tag">Longevidade</span>
                     <h3>Planner de Saúde da Lash</h3>
-                    <p>Sua mão é seu instrumento de trabalho. Tenha acesso a um planejador de pausas estratégicas e exercícios rápidos de prevenção contra LER/DORT, focados na postura da lash designer.</p>
+                    <p>Sem suas mãos e costas, seu negócio para. Tenha acesso a um planejador de pausas e ergonomia focado na postura da Lash Designer.</p>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- PARA QUEM É (Seção Ajustada e Centralizada) -->
+    <!-- PARA QUEM É -->
     <section class="target-audience">
-        <div class="lash-decor decor-right" style="bottom: 50%;"></div>
         <div class="container">
             <div class="audience-wrapper">
                 <div class="check-list glass-card reveal">
-                    <h3 style="margin-bottom: 30px; text-align: center;">Para quem é o Pack Lash Pro:</h3>
+                    <h3 style="margin-bottom: 30px; text-align: center;">Este Pack foi desenhado para:</h3>
                     <ul>
-                        <li>Lash Designers autônomas que cuidam de tudo sozinhas.</li>
-                        <li>Profissionais que sentem que o dinheiro "some" no fim do mês.</li>
-                        <li>Quem deseja profissionalizar o atendimento e a gestão.</li>
-                        <li>Quem quer ter mais segurança para passar o preço para a cliente.</li>
+                        <li>Lash Designers que querem ver a cor do dinheiro no fim do mês.</li>
+                        <li>Profissionais autônomas cansadas de serem escravas da própria agenda.</li>
+                        <li>Quem quer profissionalizar a gestão sem gastar com sistemas caros.</li>
+                        <li>Quem busca segurança e autoridade na hora de passar o preço.</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- BENEFÍCIOS -->
+    <!-- RESULTADOS / BENEFÍCIOS -->
     <section>
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 40px;" class="reveal">O que muda no seu dia a dia?</h2>
-            <div class="pain-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); border: none; background: none;">
-                <div style="text-align: center;" class="reveal">
-                    <h4 style="color: var(--pink-accent); margin-bottom: 10px;">Segurança</h4>
-                    <p style="color: #aaa;">Saber exatamente o custo do seu pingo de cola e do seu minuto trabalhado.</p>
+            <h2 style="text-align: center; margin-bottom: 40px;" class="reveal">O impacto no seu bolso</h2>
+            <div class="pain-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); border: none; background: none; box-shadow: none;">
+                <div style="text-align: center; border: none; background: transparent; box-shadow: none;" class="pain-item reveal">
+                    <h4 style="color: var(--pink-accent); font-size: 1.2rem; margin-bottom: 10px;">Clareza Total</h4>
+                    <p style="color: #666;">Saiba o custo exato de cada gota de cola e cada minuto trabalhado.</p>
                 </div>
-                <div style="text-align: center;" class="reveal">
-                    <h4 style="color: var(--pink-accent); margin-bottom: 10px;">Previsibilidade</h4>
-                    <p style="color: #aaa;">Agenda organizada com menos buracos e faturamento mais estável.</p>
+                <div style="text-align: center; border: none; background: transparent; box-shadow: none;" class="pain-item reveal">
+                    <h4 style="color: var(--pink-accent); font-size: 1.2rem; margin-bottom: 10px;">Lucro Previsível</h4>
+                    <p style="color: #666;">Agenda organizada e precificação correta significam dinheiro sobrando.</p>
                 </div>
-                <div style="text-align: center;" class="reveal">
-                    <h4 style="color: var(--pink-accent); margin-bottom: 10px;">Longevidade</h4>
-                    <p style="color: #aaa;">Trabalhar com menos dores físicas para ter uma carreira longa.</p>
+                <div style="text-align: center; border: none; background: transparent; box-shadow: none;" class="pain-item reveal">
+                    <h4 style="color: var(--pink-accent); font-size: 1.2rem; margin-bottom: 10px;">Carreira Longa</h4>
+                    <p style="color: #666;">Trabalhe com menos dores físicas e garanta seu futuro na profissão.</p>
                 </div>
             </div>
         </div>
@@ -601,19 +583,19 @@
     <!-- PROVA SOCIAL -->
     <section class="testimonials">
         <div class="container">
-            <h2 style="text-align: center;" class="reveal">Quem usa, recomenda</h2>
+            <h2 style="text-align: center;" class="reveal">Lash Designers que mudaram de nível</h2>
             <div class="testimonial-grid">
                 <div class="testimonial-card reveal">
-                    <p class="testimonial-text">"Eu achava que cobrava bem no Volume Russo, mas a calculadora me mostrou que eu estava tendo prejuízo por causa do tempo que levava. Ajustei o preço e as clientes valorizaram mais."</p>
-                    <p class="testimonial-author">mariana_lashrj</p>
+                    <p class="testimonial-text">"Eu vivia lotada mas não tinha dinheiro. A calculadora me mostrou que eu estava pagando para trabalhar no Volume Russo. Ajustei o preço e meu lucro triplicou."</p>
+                    <p class="testimonial-author">Mariana S. <span>@mariana_lashrj</span></p>
                 </div>
                 <div class="testimonial-card reveal">
-                    <p class="testimonial-text">"O Gestor de Retoques salvou meu mês fraco. Mandei mensagem para as clientes na data que a ferramenta indicou e lotei a semana só com manutenções."</p>
-                    <p class="testimonial-author">studio.carolb</p>
+                    <p class="testimonial-text">"Só com o Gestor de Retoques eu fechei 5 manutenções a mais na semana passada. O Pack se pagou no primeiro dia de uso."</p>
+                    <p class="testimonial-author">Carol B. <span>@studio.carolb</span></p>
                 </div>
                 <div class="testimonial-card reveal">
-                    <p class="testimonial-text">"Simples e direto ao ponto. Não tenho paciência para planilhas de Excel complicadas, e esse pacote resolveu meu financeiro."</p>
-                    <p class="testimonial-author">fran.beautycilios</p>
+                    <p class="testimonial-text">"O visual é lindo e muito fácil de mexer. Não sou boa com tecnologia, mas consegui organizar tudo em 10 minutos."</p>
+                    <p class="testimonial-author">Fran Beauty <span>@fran.beautycilios</span></p>
                 </div>
             </div>
         </div>
@@ -621,25 +603,22 @@
 
     <!-- OFERTA -->
     <section class="offer" id="oferta">
-        <div class="lash-decor decor-left" style="bottom: 0;"></div>
         <div class="container reveal">
             <div class="offer-box">
-                <h2 class="offer-title">Tenha o controle do seu Studio na palma da mão</h2>
-                <p style="margin-bottom: 30px; color: #ccc;">
-                    Leve o <strong>Pack Lash Pro completo</strong> (5 ferramentas) pelo valor de uma única manutenção de cílios.
-                </p>
-                <p style="font-size: 0.9rem; color: #888; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 1px;">
-                    Acesso vitalício | Atualizações inclusas | Suporte
+                <span style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; color: #888;">Oferta Exclusiva</span>
+                <h2 class="offer-title">Tenha o controle total do seu Studio</h2>
+                <p style="margin-bottom: 30px; color: #555;">
+                    Leve o <strong>Pack Lash Pro Completo</strong> (5 Ferramentas) pelo valor de uma única manutenção de cílios.
                 </p>
                 
                 <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
                     <a href="#" class="btn btn-primary">QUERO ACESSAR O PACOTE AGORA</a>
-                    <a href="#" class="btn btn-secondary">Ver como funciona</a>
+                    <a href="#" class="btn btn-secondary">Ver vídeo de demonstração</a>
                 </div>
                 
-                <p style="margin-top: 30px; font-size: 0.8rem; color: #666;">
-                    Compra segura. Garantia de 7 dias.
-                </p>
+                <div style="margin-top: 30px; font-size: 0.85rem; color: #777; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                    <span>🔒 Pagamento Seguro</span> | <span>🛡️ Garantia de 7 dias</span>
+                </div>
             </div>
         </div>
     </section>
@@ -647,22 +626,19 @@
     <footer>
         <div class="container">
             <p>&copy; 2023 Pack Lash Pro. Todos os direitos reservados.</p>
-            <p style="opacity: 0.5; margin-top: 10px;">Este produto não garante resultados financeiros milagrosos. O sucesso depende da aplicação das ferramentas.</p>
+            <p style="margin-top: 10px; font-size: 0.75rem;">Este produto oferece ferramentas de gestão. O sucesso financeiro depende da aplicação correta das estratégias.</p>
         </div>
     </footer>
 
-    <!-- SCRIPT DE ANIMAÇÃO NO SCROLL -->
+    <!-- SCRIPT DE ANIMAÇÃO -->
     <script>
         window.addEventListener('scroll', reveal);
-
         function reveal() {
             var reveals = document.querySelectorAll('.reveal');
-
             for (var i = 0; i < reveals.length; i++) {
                 var windowheight = window.innerHeight;
                 var revealtop = reveals[i].getBoundingClientRect().top;
                 var revealpoint = 100;
-
                 if (revealtop < windowheight - revealpoint) {
                     reveals[i].classList.add('active');
                 }
