@@ -11,15 +11,15 @@
         /* --- CONFIGURAÇÕES GERAIS --- */
         :root {
             /* Paleta Silver & Black */
-            --bg-gradient: linear-gradient(135deg, #F5F7FA 0%, #C3CFE2 100%);
+            --bg-gradient: linear-gradient(135deg, #F5F7FA 0%, #C3CFE2 100%); /* Prateado Metálico */
             
-            --card-bg: rgba(255, 255, 255, 0.45);
+            --card-bg: rgba(255, 255, 255, 0.45); /* Vidro Branco */
             --card-border: rgba(255, 255, 255, 0.8);
             
-            --text-main: #111111;
-            --text-muted: #444444;
+            --text-main: #111111; /* Preto Absoluto */
+            --text-muted: #444444; /* Cinza Escuro */
             
-            --pink-accent: #FF007F;
+            --pink-accent: #FF007F; /* Rosa Neon */
             --pink-glow: rgba(255, 0, 127, 0.25);
             
             --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -35,14 +35,14 @@
         body {
             font-family: 'Poppins', sans-serif;
             background: var(--bg-gradient);
-            background-attachment: fixed;
+            background-attachment: fixed; /* Efeito metálico fixo */
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
             min-height: 100vh;
         }
 
-        /* --- BACKGROUND ANIMADO (ELEMENTOS FLUTUANTES) --- */
+        /* --- DECORAÇÃO DE FUNDO (CÍLIOS E OLHOS) --- */
         .bg-decor-wrapper {
             position: fixed;
             top: 0;
@@ -54,55 +54,42 @@
             overflow: hidden;
         }
 
+        /* Ícones SVG estilizados via CSS Mask ou Background Image */
         .decor-icon {
             position: absolute;
-            opacity: 0.05; /* Transparência sutil */
+            opacity: 0.06; /* Bem sutil para parecer marca d'água */
             background-repeat: no-repeat;
             background-size: contain;
-            /* Animação de flutuação */
-            animation: floating 8s infinite alternate ease-in-out;
         }
 
-        /* Definição da Animação Suave */
-        @keyframes floating {
-            0% { transform: translateY(0px) rotate(0deg); }
-            100% { transform: translateY(-20px) rotate(5deg); }
+        /* Ícone Cílios 1 */
+        .icon-lash-1 {
+            width: 300px;
+            height: 300px;
+            top: 5%;
+            left: -50px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23000' stroke-width='2'%3E%3Cpath d='M10 50 Q 50 10 90 50' /%3E%3Cpath d='M20 40 L 15 20' /%3E%3Cpath d='M35 30 L 30 10' /%3E%3Cpath d='M50 25 L 50 5' /%3E%3Cpath d='M65 30 L 70 10' /%3E%3Cpath d='M80 40 L 85 20' /%3E%3C/svg%3E");
+            transform: rotate(-10deg);
         }
 
-        /* Ícone: Cílios Curvados */
-        .icon-lash {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23000' stroke-width='3'%3E%3Cpath d='M10 50 Q 50 10 90 50' /%3E%3Cpath d='M20 40 L 15 20' /%3E%3Cpath d='M35 30 L 30 10' /%3E%3Cpath d='M50 25 L 50 5' /%3E%3Cpath d='M65 30 L 70 10' /%3E%3Cpath d='M80 40 L 85 20' /%3E%3C/svg%3E");
-        }
-
-        /* Ícone: Olho Aberto */
-        .icon-eye {
+        /* Ícone Olho/Cílios 2 */
+        .icon-lash-2 {
+            width: 400px;
+            height: 400px;
+            bottom: 10%;
+            right: -100px;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23FF007F' stroke-width='2'%3E%3Cpath d='M10 50 Q 50 90 90 50' /%3E%3Cpath d='M10 50 Q 50 10 90 50' /%3E%3Ccircle cx='50' cy='50' r='15' /%3E%3Cpath d='M50 10 L 50 2' /%3E%3Cpath d='M30 15 L 25 5' /%3E%3Cpath d='M70 15 L 75 5' /%3E%3C/svg%3E");
         }
 
-        /* POSICIONAMENTO E TAMANHO DOS ÍCONES (ESPALHADOS) */
-        
-        /* Topo Esquerda */
-        .pos-1 { width: 80px; height: 80px; top: 5%; left: 5%; animation-delay: 0s; }
-        
-        /* Topo Direita */
-        .pos-2 { width: 100px; height: 100px; top: 10%; right: 5%; animation-delay: 1s; }
-        
-        /* Meio Esquerda */
-        .pos-3 { width: 60px; height: 60px; top: 35%; left: -10px; animation-delay: 2s; transform: rotate(45deg); }
-        
-        /* Meio Centro-Direita */
-        .pos-4 { width: 90px; height: 90px; top: 45%; right: 15%; animation-delay: 3s; }
-        
-        /* Baixo Esquerda */
-        .pos-5 { width: 120px; height: 120px; top: 70%; left: 10%; animation-delay: 0.5s; }
-        
-        /* Baixo Direita */
-        .pos-6 { width: 70px; height: 70px; top: 80%; right: 5%; animation-delay: 1.5s; }
-        
-        /* Fundo Centro (Muito transparente) */
-        .pos-7 { width: 200px; height: 200px; top: 20%; left: 40%; opacity: 0.02; animation-delay: 4s; }
-        .pos-8 { width: 150px; height: 150px; top: 60%; left: 30%; opacity: 0.02; animation-delay: 2.5s; }
-
+        /* Ícone Cílios 3 */
+        .icon-lash-3 {
+            width: 150px;
+            height: 150px;
+            top: 40%;
+            right: 10%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23000' stroke-width='3'%3E%3Cpath d='M10 60 Q 50 20 90 60' /%3E%3Cpath d='M25 45 L 20 25' /%3E%3Cpath d='M50 35 L 50 10' /%3E%3Cpath d='M75 45 L 80 25' /%3E%3C/svg%3E");
+            transform: rotate(15deg);
+        }
 
         .container {
             max-width: 1100px;
@@ -178,6 +165,18 @@
             box-shadow: 0 10px 30px var(--pink-glow);
         }
 
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-main);
+            border: 2px solid var(--text-main);
+            margin-top: 15px;
+        }
+
+        .btn-secondary:hover {
+            background: var(--text-main);
+            color: #fff;
+        }
+
         /* --- HERO SECTION --- */
         .hero {
             text-align: center;
@@ -204,7 +203,7 @@
             font-weight: 400;
         }
 
-        /* --- CARDS & GLASSMORPHISM --- */
+        /* --- CARDS & GLASSMORPHISM (Silver Style) --- */
         .glass-card {
             background: var(--card-bg);
             backdrop-filter: blur(15px);
@@ -253,7 +252,7 @@
         .tool-card {
             display: flex;
             flex-direction: column;
-            background: #fff;
+            background: #fff; /* Fundo branco sólido para destaque no prata */
             border-radius: 20px;
             padding: 40px;
             margin-bottom: 30px;
@@ -273,7 +272,7 @@
         .tool-number {
             font-size: 3.5rem;
             font-weight: 800;
-            color: #E0E0E0;
+            color: #E0E0E0; /* Prata bem claro para o número */
             margin-bottom: 20px;
             line-height: 1;
             text-shadow: 1px 1px 0 #ccc;
@@ -427,6 +426,7 @@
             .hero { padding-top: 120px; padding-bottom: 60px; }
             .hero h1 { font-size: 2.3rem; }
             .offer-box { padding: 40px 20px; }
+            .bg-decor-wrapper { opacity: 0.5; } /* Menos poluição visual no mobile */
         }
     </style>
 </head>
@@ -437,29 +437,20 @@
         <div class="brand-name">Pack Lash <span>Pro</span></div>
     </div>
 
-    <!-- BACKGROUND DECORATIVO ANIMADO -->
+    <!-- BACKGROUND DECORATIVO (OVERLAYS) -->
     <div class="bg-decor-wrapper">
-        <!-- Ícones menores, espalhados e animados -->
-        <div class="decor-icon icon-lash pos-1"></div>
-        <div class="decor-icon icon-eye pos-2"></div>
-        <div class="decor-icon icon-lash pos-3"></div>
-        <div class="decor-icon icon-eye pos-4"></div>
-        <div class="decor-icon icon-lash pos-5"></div>
-        <div class="decor-icon icon-eye pos-6"></div>
-        <div class="decor-icon icon-lash pos-7"></div>
-        <div class="decor-icon icon-eye pos-8"></div>
+        <div class="decor-icon icon-lash-1"></div>
+        <div class="decor-icon icon-lash-2"></div>
+        <div class="decor-icon icon-lash-3"></div>
     </div>
 
     <!-- HEADER HERO -->
     <header class="hero">
         <div class="container reveal">
+            <!-- Nova Headline Persuasiva -->
             <h1>Agenda cheia não paga boleto. <br>Transforme seus atendimentos em <span>Lucro Real</span>.</h1>
             <p>Pare de "pagar para trabalhar". Descubra o kit de inteligência financeira e gestão que as maiores Lash Designers estão usando para dobrar o lucro sem trabalhar mais horas.</p>
-            
-            <!-- LINK DE CHECKOUT 1 -->
-            <!-- Substitua o # abaixo pelo seu link (ex: kiwify, hotmart) -->
-            <a href="SEU_LINK_DE_CHECKOUT_AQUI" class="btn btn-primary">Quero Lucrar de Verdade</a>
-            
+            <a href="#oferta" class="btn btn-primary">Quero Lucrar de Verdade</a>
         </div>
     </header>
 
@@ -621,11 +612,8 @@
                 </p>
                 
                 <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-                    
-                    <!-- LINK DE CHECKOUT 2 -->
-                    <!-- Substitua o # abaixo pelo seu link (ex: kiwify, hotmart) -->
-                    <a href="SEU_LINK_DE_CHECKOUT_AQUI" class="btn btn-primary">QUERO ACESSAR O PACOTE AGORA</a>
-                    
+                    <a href="#" class="btn btn-primary">QUERO ACESSAR O PACOTE AGORA</a>
+                    <a href="#" class="btn btn-secondary">Ver vídeo de demonstração</a>
                 </div>
                 
                 <div style="margin-top: 30px; font-size: 0.85rem; color: #777; display: flex; align-items: center; justify-content: center; gap: 10px;">
