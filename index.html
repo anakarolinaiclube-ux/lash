@@ -61,25 +61,41 @@
             letter-spacing: -0.5px;
         }
 
-        /* --- LOGO TOPO --- */
+        /* --- LOGO TOPO (ESTILO PÍLULA PREMIUM) --- */
         .top-bar {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 20px 0;
+            padding: 30px 0; /* Espaçamento do topo */
             text-align: center;
             z-index: 10;
         }
 
         .brand-name {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 3px;
             color: var(--text-main);
             position: relative;
             display: inline-block;
+            
+            /* Estilo Pílula / Capsule */
+            background: rgba(255, 255, 255, 0.65); /* Fundo branco translúcido */
+            backdrop-filter: blur(12px); /* Efeito de desfoque premium */
+            -webkit-backdrop-filter: blur(12px);
+            padding: 12px 40px; /* Espaçamento interno confortável */
+            border-radius: 100px; /* Bordas totalmente redondas */
+            border: 1px solid rgba(255, 255, 255, 0.9); /* Borda sutil */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06); /* Sombra suave para destacar */
+            transition: all 0.3s ease;
+        }
+
+        .brand-name:hover {
+            background: rgba(255, 255, 255, 0.85);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
         }
         
         .brand-name span {
@@ -119,25 +135,25 @@
         /* --- HERO SECTION --- */
         .hero {
             text-align: center;
-            padding: 160px 0 100px;
+            padding: 180px 0 100px; /* Aumentado top padding por causa da logo */
         }
 
         .hero h1 {
-            font-size: 3.2rem;
+            font-size: 3rem; /* Leve ajuste para caber melhor */
             margin-bottom: 24px;
             color: var(--text-main);
-            line-height: 1.2;
+            line-height: 1.25;
         }
 
+        /* Efeito de destaque no texto */
         .hero h1 span {
             color: var(--pink-accent);
-            background: linear-gradient(120deg, transparent 0%, transparent 60%, rgba(255, 0, 127, 0.2) 60%, rgba(255, 0, 127, 0.2) 100%);
         }
 
         .hero p {
             font-size: 1.25rem;
             color: var(--text-muted);
-            max-width: 750px;
+            max-width: 780px;
             margin: 0 auto 40px auto;
             font-weight: 400;
         }
@@ -362,15 +378,15 @@
 
         @media (max-width: 767px) {
             section { padding: 60px 0; }
-            .hero { padding-top: 120px; padding-bottom: 60px; }
-            .hero h1 { font-size: 2.3rem; }
+            .hero { padding-top: 140px; padding-bottom: 60px; }
+            .hero h1 { font-size: 2.2rem; }
             .offer-box { padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- NOME DO PRODUTO TOPO -->
+    <!-- NOME DO PRODUTO TOPO (COM BACKGROUND PÍLULA) -->
     <div class="top-bar">
         <div class="brand-name">Pack Lash <span>Pro</span></div>
     </div>
@@ -378,12 +394,15 @@
     <!-- HEADER HERO -->
     <header class="hero">
         <div class="container reveal">
-            <h1>Agenda cheia não paga boleto. <br>Transforme seus atendimentos em <span>Lucro Real</span>.</h1>
-            <p>Pare de "pagar para trabalhar". Descubra o kit de inteligência financeira e gestão que as maiores Lash Designers estão usando para dobrar o lucro sem trabalhar mais horas.</p>
+            <!-- NOVA HEADLINE -->
+            <h1>Trabalhar com cílios não deveria custar <br><span>sua saúde nem seu lucro</span>.</h1>
             
-            <!-- LINK DE CHECKOUT 1 -->
+            <!-- NOVA SUB-HEADLINE -->
+            <p>Descubra como cobrar o preço justo, organizar sua agenda e cuidar da sua saúde com o kit de gestão que as maiores Lash Designers estão usando.</p>
+            
+            <!-- CTA ATUALIZADO (LINK DE CHECKOUT 1) -->
             <!-- Substitua SEU_LINK_DE_CHECKOUT_AQUI pelo seu link real -->
-            <a href="SEU_LINK_DE_CHECKOUT_AQUI" class="btn btn-primary">Quero Lucrar de Verdade</a>
+            <a href="SEU_LINK_DE_CHECKOUT_AQUI" class="btn btn-primary">Quero acessar o pacote agora</a>
             
         </div>
     </header>
